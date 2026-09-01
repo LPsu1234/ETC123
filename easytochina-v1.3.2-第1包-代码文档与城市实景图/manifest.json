@@ -1,0 +1,18 @@
+{
+    "name": "易通中国 · EasyToChina",
+    "short_name": "易通中国 ETC",
+    "description": "Learn practical spoken Chinese for travel and business. Explore Chinese cities, culture and history while learning real-life Mandarin.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#FAF9F6",
+    "theme_color": "#1F3A5A",
+    "icons": [
+        {
+            "src": "icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}

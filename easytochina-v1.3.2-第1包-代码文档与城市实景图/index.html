@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="易通中国 EasyToChina (ETC) - Learn practical spoken Chinese for travel and business. Explore Chinese cities, culture and history while learning real-life Mandarin.">
+    <meta name="theme-color" content="#1F3A5A">
+    <title>易通中国 · EasyToChina · ETC</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css?v=1.3.2">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+</head>
+<body>
+    <div id="app">
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-inner">
+                <div class="logo" onclick="navigate('home')">
+                    <span class="logo-cn">易通中国</span>
+                    <span class="logo-badge">ETC</span>
+                    <span class="logo-en">EasyToChina</span>
+                </div>
+                <div class="topbar-right">
+                    <div id="user-area"></div>
+                    <div class="lang-toggle-wrap">
+                        <button class="lang-toggle" id="lang-toggle" onclick="App.toggleLangMenu(event)" aria-label="Switch language" title="Language / 语言">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+                            <span class="lang-current" id="lang-current">EN</span>
+                        </button>
+                        <div class="lang-menu" id="lang-menu"></div>
+                    </div>
+                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Pages will be rendered here -->
+        </main>
+
+        <footer class="app-footer">
+            <span>EasyToChina · 易通中国</span>
+            <span class="app-version">v<span id="app-version">1.3.2</span></span>
+        </footer>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-page="home" onclick="navigate('home')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>
+                <span class="i18n-static" data-i18n="navHome">Home</span>
+            </button>
+            <button class="nav-item" data-page="scenarios" onclick="navigate('scenarios')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <span class="i18n-static" data-i18n="navLearn">Learn</span>
+            </button>
+            <button class="nav-item" data-page="explore" onclick="navigate('explore')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                <span class="i18n-static" data-i18n="navExplore">Explore</span>
+            </button>
+            <button class="nav-item" data-page="practice" onclick="navigate('practice')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zM12 6v6l4 2"/></svg>
+                <span class="i18n-static" data-i18n="navPractice">Practice</span>
+            </button>
+            <button class="nav-item" data-page="me" onclick="navigate('me')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="i18n-static" data-i18n="navMe">Me</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Sentence Detail Modal -->
+    <div id="sentence-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal-overlay" onclick="closeUploadModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeUploadModal()">&times;</button>
+            <div id="upload-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/data.js?v=1.3.2"></script>
+    <script src="js/city-photos.js?v=1.3.2"></script>
+    <script src="js/city-art.js?v=1.3.2"></script>
+    <script src="js/city-art-part2.js?v=1.3.2"></script>
+    <script src="js/city-art-part3.js?v=1.3.2"></script>
+    <script src="js/city-art-part4.js?v=1.3.2"></script>
+    <script src="js/city-mascots.js?v=1.3.2"></script>
+    <script src="js/speech.js?v=1.3.2"></script>
+    <script src="js/i18n.js?v=1.3.2"></script>
+    <script src="js/auth.js?v=1.3.2"></script>
+    <script src="js/community.js?v=1.3.2"></script>
+    <script src="js/app.js?v=1.3.2"></script>
+</body>
+</html>
